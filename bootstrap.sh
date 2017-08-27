@@ -1,36 +1,38 @@
 #!/usr/bin/env bash
 
+# Add the vagrant user to the www-data group
+usermod -a -G www-data vagrant
+
 # Use single quotes instead of double quotes to make it work with special-character passwords
 PASSWORD='12345678'
 PROJECTFOLDER='ag-portfolio'
 
-# Create project folder
-sudo mkdir "/var/www/${PROJECTFOLDER}"
+# Create project folder if it doesn't exist
+[ ! -d "/var/www/${PROJECTFOLDER}" ] && mkdir -p "/var/www/${PROJECTFOLDER}"
 
 # Update / Upgrade
-sudo apt-get update
-sudo apt-get -y upgrade
+apt-get update
+apt-get -y upgrade
 
 # Install Apache 2.5 and PHP 5.5
-sudo apt-get install -y apache2
-#sudo apt-get install -y php5
-sudo apt-add-repository ppa:ondrej/php
-sudo apt-get update
-sudo apt-get install php7.1
+apt-get install -y apache2
+apt-add-repository ppa:ondrej/php
+apt-get update
+apt-get install php7.1
 
 # Install MySQL and give password to installer
-sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $PASSWORD"
-sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $PASSWORD"
-sudo apt-get -y install mysql-server
-sudo apt-get install php5-mysql
+debconf-set-selections <<< "mysql-server mysql-server/root_password password $PASSWORD"
+debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $PASSWORD"
+apt-get -y install mysql-server
+apt-get install php5-mysql
 
 # Install phpMyAdmin and give password(s) to installer
-sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/dbconfig-install boolean true"
-sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/app-password-confirm password $PASSWORD"
-sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/admin-pass password $PASSWORD"
-sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/app-pass password $PASSWORD"
-sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2"
-sudo apt-get -y install phpmyadmin
+debconf-set-selections <<< "phpmyadmin phpmyadmin/dbconfig-install boolean true"
+debconf-set-selections <<< "phpmyadmin phpmyadmin/app-password-confirm password $PASSWORD"
+debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/admin-pass password $PASSWORD"
+debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/app-pass password $PASSWORD"
+debconf-set-selections <<< "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2"
+apt-get -y install phpmyadmin
 
 # Setup hosts file
 VHOST=$(cat <<EOF
@@ -46,13 +48,18 @@ EOF
 echo "${VHOST}" > /etc/apache2/sites-available/000-default.conf
 
 # Enable mod_rewrite
-sudo a2enmod rewrite
+a2enmod rewrite
 
 # Restart Apache
 service apache2 restart
 
 # Install Git
-sudo apt-get -y install git
+apt-get -y install git
+
+# Install node and npm
+apt-get -y install node
+apt-get install nodejs-legacy
+apt-get -y install npm
 
 # Install Composer
 curl -s https://getcomposer.org/installer | php

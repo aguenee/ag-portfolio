@@ -10,9 +10,12 @@ Vagrant.configure("2") do |config|
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
 
+  config.vm.define "ag-portfolio"
+
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
   config.vm.box = "ubuntu/trusty64"
+  config.vm.box_url = "https://atlas.hashicorp.com/ubuntu/boxes/trusty64/versions/20150516.0.0/providers/virtualbox.box"
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -43,7 +46,11 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "./", "/var/www/ag-portfolio", create: true, group: "www-data", owner: "www-data"
+  config.vm.synced_folder "./", "/var/www/ag-portfolio",
+    create: false,
+    group: "www-data",
+    owner: "www-data",
+    mount_options: ["dmode=777,fmode=777"]
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.

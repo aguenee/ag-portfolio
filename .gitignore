@@ -1,2 +1,9 @@
+# Dependencies
+node_modules
+.sass-cache
+
+# Other
 .vagrant
 *.example
+*.zip
+.DS_Store
