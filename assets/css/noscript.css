@@ -1,0 +1,47 @@
+/*
+	Astral by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+*/
+/* Wrapper */
+/* line 14, ../sass/noscript.scss */
+#wrapper {
+  opacity: 1.0;
+}
+
+/* Nav */
+/* line 20, ../sass/noscript.scss */
+#nav {
+  margin-top: 4em;
+}
+/* line 23, ../sass/noscript.scss */
+#nav a {
+  opacity: 1.0;
+}
+/* line 26, ../sass/noscript.scss */
+#nav a:before, #nav a:after {
+  display: none;
+}
+/* line 31, ../sass/noscript.scss */
+#nav a span {
+  top: 0;
+  opacity: 1.0;
+}
+/* line 35, ../sass/noscript.scss */
+#nav a span:after {
+  display: none;
+}
+
+/* Panels */
+/* line 44, ../sass/noscript.scss */
+#main {
+  background: none;
+  box-shadow: none;
+}
+
+/* line 49, ../sass/noscript.scss */
+.panel {
+  position: relative;
+  background: #ffffff;
+  box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.25);
+}
