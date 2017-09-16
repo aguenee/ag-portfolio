@@ -4,6 +4,10 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+<?php
+	header('X-UA-Compatible: IE=edge,chrome=1');
+  require 'php/conf/top.php';
+?>
 <html>
 	<head>
 		<title>Audrey Guénée | Portfolio</title>
@@ -38,7 +42,6 @@
 									<p>Développeuse web front &amp; back</p>
 								</header>
 								<a href="#work" class="jumplink pic">
-									<!--<span class="arrow icon fa-chevron-right"><span>See my work</span></span>-->
 									<img src="assets/images/me.jpg" alt="" />
 								</a>
 							</article>
@@ -90,30 +93,71 @@
 							</article>
 
 						<!-- Contact -->
+						<?php
+							$messages = [];
+							if (isset($_POST['email']) && isset($_POST['message'])) {
+								$name = $_POST['name'];
+								$email = $_POST['email'];
+								$subject = $_POST['subject'];
+								$message = trim($_POST['message']);
+								if(empty($email) || empty($message)) {
+									$messages['errors'] = "Tous les champs obligatoires (*) n'ont pas été remplis.";
+								} elseif (!checkEmail($email) || !checkMessage($message)) {
+									if(!checkEmail($email)) {
+										$messages['email'] = "Veuillez saisir une adresse e-mail valide.";
+									}
+									if(!checkMessage($message)) {
+										$messages['message'] = "Le message doit comporter au moins 5 caractères.";
+									}
+								}
+								if (checkEmail($email) && checkMessage($message)) {
+									sendEmail($name, $email, $subject, $message);
+									$messages['success'] = "Bien reçu ! Je fais tout pour vous répondre dans les meilleurs délais. A bientôt !";
+									unset($name);
+									unset($email);
+									unset($subject);
+									unset($message);
+								}
+							}
+						?>
 							<article id="contact" class="panel">
+								<?php if (isset($messages['success'])) { ?>
+									<p class="12u success"><?php echo $messages['success']; ?></p>
+								<?php } ?>
 								<header>
 									<h2>Contact</h2>
+									<?php if (isset($messages['errors'])) { ?>
+										<p class="12u error"><?php echo $messages['errors']; ?></p>
+									<?php } ?>
 								</header>
-								<form action="#contact" method="post">
-									<div>
+
+								<form id="contact-form" action="#contact" method="post">
 										<div class="row">
 											<div class="6u 12u$(mobile)">
-												<input type="text" name="name" placeholder="Nom" />
+												<input type="text" name="name" placeholder="Nom"
+															 value="<?php echo isset($name) ? $name : ''; ?>" />
 											</div>
 											<div class="6u$ 12u$(mobile)">
-												<input type="text" name="email" placeholder="E-mail" />
+												<input type="text" name="email" placeholder="E-mail*"
+															 value="<?php echo isset($email) ? $email : ''; ?>" />
+											 	<?php if (isset($messages['email'])) { ?>
+													<p class="error error-email"><?php echo $messages['email']; ?></p>
+											 	<?php } ?>
 											</div>
 											<div class="12u$">
-												<input type="text" name="subject" placeholder="Objet" />
+												<input type="text" name="subject" placeholder="Objet"
+															 value="<?php echo isset($subject) ? $subject : ''; ?>" />
 											</div>
 											<div class="12u$">
-												<textarea name="message" placeholder="Message" rows="8"></textarea>
+												<textarea name="message" placeholder="Message*" rows="8"><?php echo isset($message) ? $message : ''; ?></textarea>
+												<?php if (isset($messages['message'])) { ?>
+													<p class="error error-message"><?php echo $messages['message']; ?></p>
+												<?php } ?>
 											</div>
 											<div class="12u$">
 												<input type="submit" value="Envoyer !" />
 											</div>
 										</div>
-									</div>
 								</form>
 							</article>
 
