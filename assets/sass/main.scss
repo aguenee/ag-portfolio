@@ -102,6 +102,20 @@
 		margin-bottom: 2em;
 	}
 
+	a.external-link {
+		text-decoration: none;
+		border-bottom: 2px solid #00AB6B;
+
+		&:link, &:hover, &:visited, &:active {
+			color: #00AB6B;
+		}
+
+		&:hover {
+			cursor: pointer;
+			border-bottom: none;
+		}
+	}
+
 	.error {
 		margin-bottom: 0;
 		font-size: 85%;
@@ -400,6 +414,25 @@
 				height: 100%;
 				z-index: 1;
 			}
+
+			img {
+				max-width: 325px;
+				margin: auto;
+			}
+		}
+	}
+
+	.social-link {
+		a.linkedin {
+			color: #0077B5
+		}
+
+		a.github {
+			color: #24292E;
+		}
+
+		a.twitter {
+			color: #1DA1F2;
 		}
 	}
 
@@ -686,17 +719,21 @@
 					> h1 {
 						position: absolute;
 						left: 0;
-						bottom: 52.5%;
+						bottom: 58%;
 						margin: 0;
 					}
 
 					> p {
 						position: absolute;
 						left: 0;
-						top: 52.5%;
+						top: 46.5%;
 						font-size: 1.5em;
 						letter-spacing: -0.015em;
 						margin-top: 0;
+
+						&.social-link {
+							top: 62.5%;
+						}
 					}
 				}
 			}

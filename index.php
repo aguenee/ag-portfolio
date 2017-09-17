@@ -29,7 +29,7 @@
 						<a href="#me" class="icon fa-home active"><span>Hello</span></a>
 						<a href="#work" class="icon fa-star"><span>Projets</span></a>
 						<a href="#contact" class="icon fa-paper-plane"><span>Contact</span></a>
-						<a href="CV_Audrey_GUENEE.pdf" target="_blank" class="icon fa-file"><span>CV</span></a>
+						<a href="/docs/CV_Audrey_GUENEE.pdf" target="_blank" class="icon fa-file"><span>CV</span></a>
 					</nav>
 
 				<!-- Main -->
@@ -40,6 +40,11 @@
 								<header>
 									<h1>Audrey Guénée</h1>
 									<p>Développeuse web front &amp; back</p>
+									<p class="social-link">
+										<a class="linkedin" href="https://www.linkedin.com/in/audrey-gu%C3%A9n%C3%A9e-4a990855/" target="_blank"><i class="fa fa-linkedin-square" aria-hidden="true"></i></i></a>
+										<a class="github" href="https://github.com/aguenee" target="_blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
+										<a class="twitter" href="https://twitter.com/aguenee" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+									</p>
 								</header>
 								<a href="#work" class="jumplink pic">
 									<img src="assets/images/me.jpg" alt="" />
@@ -52,20 +57,24 @@
 									<h2>Observatoire Photographique des Pôles</h2>
 								</header>
 								<p>
-									Phasellus enim sapien, blandit ullamcorper elementum eu, condimentum eu elit.
-									Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-									luctus elit eget interdum.
+									L'Observatoire Photographique des Pôles est une association, créée à l’initiative de Nicolas Mingasson,
+									dont le but est de constituer un fonds photographique de référence afin de sensibiliser le grand public
+									aux changements en cours dans les régions Arctique et en Antarctique.
+								</p>
+								<p>
+									J'ai conçu et réalisé le site de l'association avec WordPress.<br />
+									<strong>Site :</strong> <a class="external-link" href="http://observatoirephotographiquedespoles.org/" target="_blank">observatoirephotographiquedespoles.org</a>
 								</p>
 								<section>
 									<div class="row">
 										<div class="4u 12u$(mobile)">
-											<a href="#" class="image fit"><img src="assets/images/pic02.jpg" alt=""></a>
+											<span href="#" class="image fit"><img src="/docs/opp-home-top.png" alt="Observatoire Photographique des Pôles"></span>
 										</div>
 										<div class="4u 12u$(mobile)">
-											<a href="#" class="image fit"><img src="assets/images/pic02.jpg" alt=""></a>
+											<span href="#" class="image fit"><img src="/docs/opp-home-middle.png" alt="Observatoire Photographique des Pôles"></span>
 										</div>
 										<div class="4u$ 12u$(mobile)">
-											<a href="#" class="image fit"><img src="assets/images/pic02.jpg" alt=""></a>
+											<span href="#" class="image fit"><img src="/docs/opp-home-bottom.png" alt="Observatoire Photographique des Pôles"></span>
 										</div>
 									</div>
 								</section>
@@ -73,9 +82,21 @@
 									<h2>Data Gare</h2>
 								</header>
 								<p>
-									Phasellus enim sapien, blandit ullamcorper elementum eu, condimentum eu elit.
-									Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia
-									luctus elit eget interdum.
+									Data Gare est un projet de visualisation des données de la SNCF, s'inscrivant dans le cadre du programme Data Shaker
+									mis en place par le NUMA.
+								</p>
+								<p>
+									Il s'agit d'une application interactive et ludique de comparaison et de visualisation animée des données
+									sur les gares Transilien. Le dispositif est projeté en grand format sur un mur de plusieurs mètres (10x3m).
+									L'un des principaux enjeux a été de créer une expérience utilisateur unique, d'une part en tactilisant le mur,
+									et d'autre part, en donnant vie à des jeux de données statiques.
+								</p>
+								<p>
+									Le projet s'appuie sur un logiciel graphique 2D/3D en temps réel, AAASeed, basé sur du LUA et du C, conçu par
+									l'artiste programmeur Mâa Berriet.
+								</p>
+								<p>
+									<strong>Équipe :</strong> Marine Dos, Audrey Guénée, Maxime Kharlamoff et Lionel Mullot.
 								</p>
 								<section>
 									<div class="row">
